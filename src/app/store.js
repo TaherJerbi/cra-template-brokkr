@@ -1,8 +1,37 @@
 import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import { combineReducers } from '@reduxjs/toolkit';
+import { createBrowserHistory } from 'history'
+import { createRouterReducer } from '@lagunovsky/redux-react-router';
 
-export const store = configureStore({
-  reducer: {
-    counter: counterReducer,
-  },
-});
+export const history = createBrowserHistory()
+
+const configureInjectableStore = (setup) => {
+  const store = configureStore(setup);
+  
+  store.asyncReducers = {};
+
+  store.injectReducer = (key, asyncReducer) => {
+    if(store.asyncReducers[key] && store.asyncReducers[key] === asyncReducer)
+      return;
+    store.asyncReducers[key] = asyncReducer
+    store.replaceReducer(createReducer(store.asyncReducers))
+  }
+
+  function createReducer(asyncReducers) {
+    return combineReducers({
+      router: createRouterReducer(history),
+      ...asyncReducers
+    })
+  }
+
+  return store;
+
+}
+const createRootReducer = (history) => combineReducers({
+  router: createRouterReducer(history),
+})
+export const store = configureInjectableStore({
+  reducer: createRootReducer(history),
+  devTools: true,
+})
+
