@@ -1,3 +1,3 @@
-import { store } from "../app/store";
+import { store } from '../app/store'
 
-export default store.injectReducer;
+export default store.injectReducer

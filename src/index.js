@@ -1,13 +1,13 @@
-import React, { Suspense } from "react";
-import ReactDOM from "react-dom";
-import "./index.css";
-import App from "./App";
-import { store, history } from "./app/store";
-import { Provider } from "react-redux";
-import * as serviceWorker from "./serviceWorker";
-import { Routes, Route } from "react-router-dom";
-import Counter from "./pages/Counter/loadable";
-import { ReduxRouter } from "@lagunovsky/redux-react-router";
+import React, { Suspense } from 'react'
+import ReactDOM from 'react-dom'
+import './index.css'
+import App from './App'
+import { store, history } from './app/store'
+import { Provider } from 'react-redux'
+import * as serviceWorker from './serviceWorker'
+import { Routes, Route } from 'react-router-dom'
+import Counter from './pages/Counter/loadable'
+import { ReduxRouter } from '@lagunovsky/redux-react-router'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -25,10 +25,10 @@ ReactDOM.render(
       </ReduxRouter>
     </Provider>
   </React.StrictMode>,
-  document.getElementById("root")
-);
+  document.getElementById('root')
+)
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+serviceWorker.unregister()
