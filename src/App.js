@@ -1,8 +1,9 @@
 import React, { Suspense } from 'react'
-import { Link, Outlet } from 'react-router-dom'
+import { Link, Outlet, useNavigate } from 'react-router-dom'
 import './App.css'
 
 function App () {
+  const navigate = useNavigate()
   return (
     <div className="App">
       <nav
@@ -15,9 +16,13 @@ function App () {
       >
         <Link to="/counter">Counter</Link>
         <Link to="/">INDEX</Link>
+        <button onClick={() => {
+          localStorage.removeItem('auth')
+          navigate('/login')
+        }}>Click here to logout</button>
       </nav>
       <Suspense fallback="Loading ...">
-        <Outlet />
+        {<Outlet />}
       </Suspense>
     </div>
   )

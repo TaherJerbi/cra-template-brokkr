@@ -26,7 +26,7 @@ export default function Counter ({
         <button
           className={styles.button}
           aria-label="Decrement value"
-          onClick={decrement}
+          onClick={() => decrement()}
         >
           -
         </button>
@@ -34,7 +34,7 @@ export default function Counter ({
         <button
           className={styles.button}
           aria-label="Increment value"
-          onClick={increment}
+          onClick={() => increment()}
         >
           +
         </button>

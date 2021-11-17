@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import Counter from './Counter'
 import injectReducer from '../../utils/injectReducer'
-import reducer, { actions, selectCount, selectSum } from '../../features/counter/counterSlice'
+import reducer, { actions, selectCount, selectSum, incrementAsync, incrementIfOdd } from '../../features/counter/counterSlice'
 import Helmet from 'react-helmet'
 function CounterIndex (props) {
   injectReducer('counter', reducer)
@@ -11,7 +11,7 @@ function CounterIndex (props) {
       <Helmet>
         <title>Counter</title>
       </Helmet>
-      <Counter {...props} />;
+      <Counter {...props} />
     </>
   )
 }
@@ -20,7 +20,9 @@ const mapStateToProps = (state) => ({
   sum: selectSum(state)
 })
 const mapDispatchToProps = {
-  ...actions
+  ...actions,
+  incrementAsync,
+  incrementIfOdd
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CounterIndex)
