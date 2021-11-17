@@ -1,1 +1,2 @@
-const camel_case = 'breaking linter'
+const camelCase = 'breaking linter'
+console.log(camelCase)
