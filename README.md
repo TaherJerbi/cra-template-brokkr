@@ -42,3 +42,59 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+- Eslint : Standard
+    - pre-commit hook
+        
+        [Setting Up Husky, Prettier, and ESLint with precise-commits and lint-staged](https://duncanleung.com/husky-prettier-eslint-precise-commits-lint-staged-pre-commit-pre-push/)
+        
+
+- React Router v6
+    
+    [React Router](https://reactrouter.com/docs/en/v6/getting-started/overview)
+    
+    - Nested Routes
+    - Routing deep inside component tree
+    - https://github.com/lagunovsky/redux-react-router : To connect React Router v6 to redux store.
+
+- Redux Toolkit
+    
+    [Redux Toolkit | Redux Toolkit](https://redux-toolkit.js.org/)
+    
+    - Supports **Immer** by default
+    - Includes **reselect**
+    - Thunks for Side Effects ( instead of redux-saga )
+        
+        [Writing Logic with Thunks | Redux](https://redux.js.org/usage/writing-logic-thunks)
+        
+        - createAsyncThunk — For network requests.
+    - RTK Query for data fetching. ( uses createAsyncThunk under the hood )
+
+- Code Splitting :
+    - Suspense and lazy
+        
+        [](https://reactjs.org/docs/code-splitting.html)
+        
+    - redux inject reducers : utils/injectReducer
+
+- Easy deployment
+    
+    [Deploying React with Zero Configuration](https://blog.heroku.com/deploying-react-with-zero-configuration)
+    
+
+- Code generation with plop
+    
+    [Plop: Consistency Made Simple](https://plopjs.com/)
+    
+    - Component ****
+        - PropTypes
+        - Can be wrapped in React.memo
+    - Container Component
+        - Is a component
+        - In folder
+        - Connected to store via connect
+        - index.js and Component.jsx
+    - Page
+        - Is a Container Component.
+        - Has Helmet.
+        - injects reducer.
