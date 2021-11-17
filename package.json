@@ -27,7 +27,8 @@
     "analyze": "npx cra-bundle-analyzer",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src --color",
     "format": "prettier --write 'src/**/*.{js,jsx,scss,css,json}'",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "plop": "plop"
   },
   "lint-staged": {
     "*.{js,jsx}": [

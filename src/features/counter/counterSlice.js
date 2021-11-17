@@ -65,7 +65,7 @@ export const { actions } = counterSlice
 // the state. Selectors can also be defined inline where they're used instead of
 // in the slice file. For example: `useSelector((state: RootState) => state.counter.value)`
 export const selectCount = (state) => state?.counter?.value
-
+export const counterDomainSelector = state => state?.counter
 let sum = 0
 // createSelector is the same function from the 'reselect' library.
 export const selectSum = createSelector(selectCount, (value) => {

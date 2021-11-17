@@ -1,0 +1,22 @@
+import React from 'react'
+import { connect } from 'react-redux'
+import {{name}} from './{{name}}'
+// import injectReducer from '../../utils/injectReducer'
+import { actions, {{sliceName}}DomainSelector } from '../../features/{{sliceName}}/{{sliceName}}Slice'
+
+function {{name}}Index (props) {
+  // injectReducer('{{sliceName}}', reducer)
+  return (
+    <>
+      <{{name}} {...props} />;
+    </>
+  )
+}
+const mapStateToProps = (state) => ({
+  {{sliceName}} : {{sliceName}}DomainSelector
+})
+const mapDispatchToProps = {
+  ...actions
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)({{name}}Index)
