@@ -29,9 +29,6 @@
     "format": "prettier --write 'src/**/*.{js,jsx,scss,css,json}'",
     "prepare": "husky install"
   },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
   "lint-staged": {
     "*.{js,jsx}": ["eslint"]
   },
