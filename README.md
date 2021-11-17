@@ -43,6 +43,8 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
+--- 
+# More about this template
 - Eslint : Standard
     - pre-commit hook
         
@@ -50,7 +52,6 @@ To learn React, check out the [React documentation](https://reactjs.org/).
         
 
 - React Router v6
-    
     [React Router](https://reactrouter.com/docs/en/v6/getting-started/overview)
     
     - Nested Routes
