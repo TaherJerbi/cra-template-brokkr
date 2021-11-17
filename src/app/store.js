@@ -1,37 +1,36 @@
-import { configureStore } from '@reduxjs/toolkit';
-import { combineReducers } from '@reduxjs/toolkit';
-import { createBrowserHistory } from 'history'
-import { createRouterReducer } from '@lagunovsky/redux-react-router';
+import { configureStore } from "@reduxjs/toolkit";
+import { combineReducers } from "@reduxjs/toolkit";
+import { createBrowserHistory } from "history";
+import { createRouterReducer } from "@lagunovsky/redux-react-router";
 
-export const history = createBrowserHistory()
+export const history = createBrowserHistory();
 
-const configureInjectableStore = (setup) => {
+const configureInjectableStore = (setup) => {
   const store = configureStore(setup);
-  
+
   store.asyncReducers = {};
 
   store.injectReducer = (key, asyncReducer) => {
-    if(store.asyncReducers[key] && store.asyncReducers[key] === asyncReducer)
+    if (typeof asyncReducer !== "function" || (store.asyncReducers[key] && store.asyncReducers[key] === asyncReducer))
       return;
-    store.asyncReducers[key] = asyncReducer
-    store.replaceReducer(createReducer(store.asyncReducers))
-  }
+    store.asyncReducers[key] = asyncReducer;
+    store.replaceReducer(createReducer(store.asyncReducers));
+  };
 
   function createReducer(asyncReducers) {
     return combineReducers({
       router: createRouterReducer(history),
-      ...asyncReducers
-    })
+      ...asyncReducers,
+    });
   }
 
   return store;
-
-}
-const createRootReducer = (history) => combineReducers({
-  router: createRouterReducer(history),
-})
+};
+const createRootReducer = (history) =>
+  combineReducers({
+    router: createRouterReducer(history),
+  });
 export const store = configureInjectableStore({
   reducer: createRootReducer(history),
   devTools: true,
-})
-
+});
