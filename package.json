@@ -26,10 +26,20 @@
     "eject": "react-scripts eject",
     "analyze": "npx cra-bundle-analyzer",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src --color",
-    "format": "prettier --write 'src/**/*.{js,jsx,scss,css,json}'"
+    "format": "prettier --write 'src/**/*.{js,jsx,scss,css,json}'",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": ["eslint"]
+  },
+  "lint-prepush": {
+    "base": "develop",
+    "tasks": {
+      "*.{js,jsx}": ["eslint"]
+    }
   },
   "browserslist": {
     "production": [
@@ -54,6 +64,10 @@
     "eslint-plugin-react": "^7.27.0",
     "eslint-plugin-react-hooks": "^4.3.0",
     "plop": "^2.7.6",
-    "prettier": "^2.4.1"
+    "prettier": "^2.4.1",
+    "husky": "^6.0.0",
+    "lint-prepush": "^2.2.0",
+    "lint-staged": "^11.0.0",
+    "precise-commits": "^1.0.2"
   }
 }
