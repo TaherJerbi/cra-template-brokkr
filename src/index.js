@@ -10,6 +10,7 @@ import Counter from './pages/Counter/loadable'
 import { ReduxRouter } from '@lagunovsky/redux-react-router'
 import Login from './pages/Login/'
 import useAuth from './auth/authHook'
+import Pokemon from './pages/Pokemon'
 
 function PrivateOutlet () {
   const auth = useAuth()
@@ -28,6 +29,7 @@ ReactDOM.render(
               <Route path='/' element={<PrivateOutlet/>}>
                 <Route index element={<h1>Welcome to the index page</h1>} />
                 <Route path="counter" element={<Counter />} />
+                <Route path="pokemon" element={<Pokemon />} />
               </Route>
             </Route>
               <Route path="*" element={<div>Not Found</div>} />

@@ -98,3 +98,5 @@ To learn React, check out the [React documentation](https://reactjs.org/).
         - Is a Container Component.
         - Has Helmet.
         - injects reducer.
+# TODO LIST
+- [ ] Add an API slice using RTK Query 
