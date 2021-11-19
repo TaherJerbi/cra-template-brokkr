@@ -1,13 +1,21 @@
+const { sliceExists, componentExists } = require('./internals/generators/utils/fileExists')
+
 const componentPrompts = [
   {
     type: 'input',
     name: 'name',
-    message: 'What do you want to name your component?'
+    message: 'What do you want to name your component?',
+    validate: value => {
+      if (!value) { return 'Name is required' }
+      if (componentExists(value)) { return 'This component already exists' }
+      return true
+    }
   },
   {
     type: 'confirm',
     name: 'memo',
-    message: 'Do you want wrap this component in React.memo?'
+    message: 'Do you want wrap this component in React.memo?',
+    default: false
   }
 ]
 const componentActions = (path) => [
@@ -22,27 +30,43 @@ const containerPrompts = [
   {
     type: 'input',
     name: 'sliceName',
-    message: 'Which slice do you want to connect to this container ?'
+    message: 'Which slice do you want to connect to this container ? We will generate the slice if it does not exist yet.',
+    validate: value => {
+      if (!value) { return 'You have to specify a slice name. If the slice does not exist, we will generate one for you.' }
+
+      return true
+    }
   }
 ]
-const containerActions = (path) => [
-  ...componentActions(path),
-  {
-    type: 'add',
-    path: `src/${path}/{{properCase name}}/index.js`,
-    templateFile: 'internals/generators/templates/Container/index.js.hbs'
+const containerActions = (path) => (data) => {
+  const actions = [
+    ...componentActions(path),
+    {
+      type: 'add',
+      path: `src/${path}/{{properCase name}}/index.js`,
+      templateFile: 'internals/generators/templates/Container/index.js.hbs'
+    }]
+  if (!sliceExists(data.sliceName)) {
+    actions.push(
+      {
+        type: 'add',
+        path: `src/features/${data.sliceName}/${data.sliceName}Slice.js`,
+        templateFile: 'internals/generators/templates/Feature/slice.js.hbs'
+      })
+    actions.push({
+      type: 'add',
+      path: `src/features/${data.sliceName}/${data.sliceName}API.js`,
+      templateFile: 'internals/generators/templates/Feature/api.js.hbs'
+    })
   }
-]
+  return actions
+}
 const pagePrompts = [
   ...containerPrompts
 ]
-const pageActions = (path) => [
-  ...componentActions(path),
-  {
-    type: 'add',
-    path: `src/${path}/{{properCase name}}/index.js`,
-    templateFile: 'internals/generators/templates/Page/index.js.hbs'
-  }
+const pageActions = (path) => (data) => [
+  ...containerActions(path)(data)
+
 ]
 const config = plop => {
   plop.setGenerator('Component', {
