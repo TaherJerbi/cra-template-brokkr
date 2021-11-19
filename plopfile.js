@@ -1,4 +1,4 @@
-const { sliceExists, componentExists } = require('./internals/generators/utils/fileExists')
+const { sliceExists, componentExists, slices } = require('./internals/generators/utils/fileExists')
 
 const componentPrompts = [
   {
@@ -28,11 +28,12 @@ const componentActions = (path) => [
 const containerPrompts = [
   ...componentPrompts,
   {
-    type: 'input',
+    type: 'list',
+    choices: slices,
     name: 'sliceName',
-    message: 'Which slice do you want to connect to this container ? We will generate the slice if it does not exist yet.',
+    message: 'Which slice do you want to connect to this container ?',
     validate: value => {
-      if (!value) { return 'You have to specify a slice name. If the slice does not exist, we will generate one for you.' }
+      if (!value) { return 'You have to specify a slice name.' }
 
       return true
     }

@@ -17,5 +17,6 @@ function sliceExists (slice) {
 }
 module.exports = {
   componentExists,
-  sliceExists
+  sliceExists,
+  slices
 }
