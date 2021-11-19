@@ -1,5 +1,38 @@
 {
-  "name": "rtk-demo",
+  "main": "template.json",
+  "name": "rtk-starter",
+  "description": "A quick start Create React App template with React Router v6, Redux Toolkit, and plop for code generation",
+  "contributors": [
+    {
+      "name": "Taher Jerbi",
+      "email": "jerbi.taherr@gmail.com"
+    },
+    {
+      "name": "Koussay Khelil",
+      "email": "khelil.koussay@gmail.com"
+    }
+  ],
+  "keywords": [
+    "react",
+    "create-react-app",
+    "cra-template",
+    "template",
+    "eslint",
+    "redux",
+    "react-redux",
+    "react-router",
+    "react-router-dom",
+    "prettier",
+    "plop",
+    "rtk",
+    "redux-toolkit"
+  ],
+  "files": ["template", "template.json"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TaherJerbi/rtk-starter",
+    "directory": "/"
+  },
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -28,7 +61,11 @@
     "lint": "eslint --ext .js,.jsx,.ts,.tsx src --color",
     "format": "prettier --write 'src/**/*.{js,jsx,scss,css,json}'",
     "prepare": "husky install",
-    "plop": "plop"
+    "plop": "plop",
+    
+    "clean-files": "rm -rf ./template/public ./template/src && rm -f ./template/.eslintrc ./template/plopfile.js",
+    "copy-files": "cp -a ./src/. template/src && cp -a ./public/. template/public && cp .eslintrc plopfile.js template/",
+    "prepublishOnly": "yarn clean-files && yarn copy-files"
   },
   "lint-staged": {
     "*.{js,jsx}": [
