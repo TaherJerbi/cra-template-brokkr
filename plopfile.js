@@ -16,6 +16,12 @@ const componentPrompts = [
     name: 'memo',
     message: 'Do you want wrap this component in React.memo?',
     default: false
+  },
+  {
+    type: 'confirm',
+    name: 'i18n',
+    message: 'Do you want to use the i18n hook ?',
+    default: false
   }
 ]
 const componentActions = (path) => [

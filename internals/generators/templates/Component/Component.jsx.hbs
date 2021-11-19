@@ -4,11 +4,19 @@ import React, { memo } from 'react'
 import React from 'react'
 {{/if}}
 // import PropTypes from 'prop-types'
-
+{{#if i18n}}
+import { useTranslation } from 'react-i18next'
+{{/if}}
 function {{properCase name}} () {
+  {{#if i18n}}
+  const { t } = useTranslation()
+  {{/if}}
   return (
   <div>
     {{properCase name}}
+    {{#if i18n}}
+    <h6>{t('withLove')}</h6>
+    {{/if}}
   </div>
   )
 }

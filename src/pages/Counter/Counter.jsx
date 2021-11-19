@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styles from './Counter.module.css'
 import PropTypes from 'prop-types'
+import { useTranslation } from 'react-i18next'
 export default function Counter ({
   sum,
   count,
@@ -10,6 +11,7 @@ export default function Counter ({
   incrementAsync,
   incrementIfOdd
 }) {
+  const { t } = useTranslation()
   const [incrementAmount, setIncrementAmount] = useState('2')
 
   const incrementValue = Number(incrementAmount) || 0
@@ -64,6 +66,7 @@ export default function Counter ({
           Add If Odd
         </button>
       </div>
+      <h6>{t('withLove')}</h6>
     </div>
   )
 }
