@@ -43,6 +43,8 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
+--- 
+# More about this template
 - Eslint : Standard
     - pre-commit hook
         
@@ -50,7 +52,6 @@ To learn React, check out the [React documentation](https://reactjs.org/).
         
 
 - React Router v6
-    
     [React Router](https://reactrouter.com/docs/en/v6/getting-started/overview)
     
     - Nested Routes
@@ -98,5 +99,8 @@ To learn React, check out the [React documentation](https://reactjs.org/).
         - Is a Container Component.
         - Has Helmet.
         - injects reducer.
+<<<<<<< HEAD
 # TODO LIST
 - [ ] Add an API slice using RTK Query 
+=======
+>>>>>>> 9ce3f3c70b60f047b16c737fd749aa320f666339
