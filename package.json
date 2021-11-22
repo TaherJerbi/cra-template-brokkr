@@ -34,7 +34,7 @@
     "directory": "/"
   },
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@lagunovsky/redux-react-router": "^2.2.0",
     "@reduxjs/toolkit": "^1.6.2",
@@ -66,8 +66,8 @@
     "prepare": "husky install",
     "plop": "plop",
     
-    "clean-files": "rm -rf ./template/public ./template/src && rm -f ./template/.eslintrc ./template/plopfile.js",
-    "copy-files": "cp -a ./src/. template/src && cp -a ./public/. template/public && cp .eslintrc plopfile.js template/",
+    "clean-files": "rm -rf ./template/public ./template/src ./template/.husky ./template/.vscode ./template/internals && rm -f ./template/.eslint* ./template/plopfile.js ./template/prettier*",
+    "copy-files": "cp -a ./src/. template/src && cp -a ./public/. template/public && cp -r .eslint* .prettier* plopfile.js .vscode .husky internals  template/",
     "prepublishOnly": "yarn clean-files && yarn copy-files"
   },
   "lint-staged": {
