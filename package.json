@@ -1,6 +1,6 @@
 {
   "main": "template.json",
-  "name": "rtk-starter",
+  "name": "cra-template-brokkr",
   "description": "A quick start Create React App template with React Router v6, Redux Toolkit, and plop for code generation",
   "contributors": [
     {
