@@ -1,0 +1,25 @@
+import React from 'react'
+import { connect } from 'react-redux'
+import {{properCase name}} from './{{properCase name}}'
+import injectReducer from '../../utils/injectReducer'
+import reducer, { actions, {{sliceName}}DomainSelector } from '../../features/{{sliceName}}/{{sliceName}}Slice'
+import Helmet from 'react-helmet'
+function {{properCase name}}Index (props) {
+  injectReducer('{{sliceName}}', reducer)
+  return (
+    <>
+      <Helmet>
+        {{properCase name}}
+      </Helmet>
+      <{{properCase name}} {...props} />;
+    </>
+  )
+}
+const mapStateToProps = (state) => ({
+  {{sliceName}}: {{sliceName}}DomainSelector
+})
+const mapDispatchToProps = {
+  ...actions
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)({{properCase name}}Index)
