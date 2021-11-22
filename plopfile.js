@@ -22,15 +22,36 @@ const componentPrompts = [
     name: 'i18n',
     message: 'Do you want to use the i18n hook ?',
     default: false
-  }
-]
-const componentActions = (path) => [
+  },
   {
-    type: 'add',
-    path: `src/${path}/{{properCase name}}/{{properCase name}}.jsx`,
-    templateFile: 'internals/generators/templates/Component/Component.jsx.hbs'
+    type: 'confirm',
+    name: 'wantLoadable',
+    default: false,
+    message: 'Do you want to load the component asynchronously?'
   }
 ]
+const componentActions = (path) => (data) => {
+  const actions = [
+    {
+      type: 'add',
+      path: `src/${path}/{{properCase name}}/{{properCase name}}.jsx`,
+      templateFile: 'internals/generators/templates/Component/Component.jsx.hbs'
+    },
+    {
+      type: 'add',
+      path: `src/${path}/{{properCase name}}/index.js`,
+      templateFile: 'internals/generators/templates/Component/index.js.hbs'
+    }
+  ]
+  if (data.wantLoadable) {
+    actions.push({
+      type: 'add',
+      path: `src/${path}/{{properCase name}}/Loadable.js`,
+      templateFile: 'internals/generators/templates/Component/Loadable.js.hbs'
+    })
+  }
+  return actions
+}
 const containerPrompts = [
   ...componentPrompts,
   {
