@@ -1,7 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), 
 using the Brokkr template.
-You can use the template by cloning this repository and running this command : 
-`npx create-react-app my-app --template file:./path/to/this/template`
+
+### `npx create-react-app my-app --template cra-template-brokkr`
 
 ## Available Scripts
 
