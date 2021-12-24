@@ -1,4 +1,7 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), 
+using the Brokkr template.
+
+### `npx create-react-app my-app --template cra-template-brokkr`
 
 ## Available Scripts
 
@@ -99,8 +102,3 @@ To learn React, check out the [React documentation](https://reactjs.org/).
         - Is a Container Component.
         - Has Helmet.
         - injects reducer.
-<<<<<<< HEAD
-# TODO LIST
-- [ ] Add an API slice using RTK Query 
-=======
->>>>>>> 9ce3f3c70b60f047b16c737fd749aa320f666339

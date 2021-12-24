@@ -15,7 +15,7 @@ const containerPrompts = [
     }
   }
 ]
-const containerActions = baseActions('components')('Container')
+const containerActions = baseActions('containers')('Container')
 
 module.exports = {
   containerGenerator: {
