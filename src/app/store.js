@@ -19,7 +19,7 @@ const configureInjectableStore = (setup) => {
 
   function createReducer (asyncReducers) {
     return combineReducers({
-      router: createRouterReducer(history),
+      ...rootReducerObject(history),
       ...asyncReducers
     })
   }
@@ -27,10 +27,11 @@ const configureInjectableStore = (setup) => {
   return store
 }
 const createRootReducer = (history) =>
-  combineReducers({
-    router: createRouterReducer(history),
-    [pokemonApi.reducerPath]: pokemonApi.reducer
-  })
+  combineReducers(rootReducerObject(history))
+const rootReducerObject = (history) => ({
+  router: createRouterReducer(history),
+  [pokemonApi.reducerPath]: pokemonApi.reducer
+})
 export const store = configureInjectableStore({
   reducer: createRootReducer(history),
   devTools: true,
